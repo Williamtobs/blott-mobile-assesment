@@ -15,7 +15,7 @@ class CustomCircleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: isActive ? onTap : null,
       child: Container(
         height: 56.height,
         width: 56.height,

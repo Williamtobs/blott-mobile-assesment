@@ -4,6 +4,7 @@ import 'package:blott_mobile_assesment/src/core/constants/app_spacing.dart';
 import 'package:blott_mobile_assesment/src/core/constants/styles.dart';
 import 'package:blott_mobile_assesment/src/core/extension/extension.dart';
 import 'package:blott_mobile_assesment/src/core/router/app_router.dart';
+import 'package:blott_mobile_assesment/src/data/datasource/remote/local_storage.dart';
 import 'package:blott_mobile_assesment/src/presentation/widgets/custom_circle_button.dart';
 import 'package:blott_mobile_assesment/src/presentation/widgets/custom_text_field.dart';
 
@@ -82,7 +83,15 @@ class LoginPage extends HookWidget {
               child: CustomCircleButton(
                 isActive: firstNameActive.value && lastNameActive.value,
                 onTap: () {
-                  context.router.push(const NotificationRoute());
+                  LocalStorage().writeData(
+                    'firstName',
+                    firstNameController.text,
+                  );
+                  LocalStorage().writeData(
+                    'lastName',
+                    lastNameController.text,
+                  );
+                  context.router.replace(const NotificationRoute());
                 },
               ),
             ),

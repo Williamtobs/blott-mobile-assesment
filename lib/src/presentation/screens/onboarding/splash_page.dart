@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:blott_mobile_assesment/main.dart';
 import 'package:blott_mobile_assesment/src/core/extension/extension.dart';
 import 'package:blott_mobile_assesment/src/core/router/app_router.dart';
+import 'package:blott_mobile_assesment/src/data/datasource/remote/local_storage.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -17,8 +19,17 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     Future.delayed(
       const Duration(seconds: 2),
-      () => context.router.replace(const LoginRoute()),
+      () => handleNavigation(),
     );
+  }
+
+  handleNavigation() async {
+    final firstName = await LocalStorage().readData('firstName');
+    if (firstName != null) {
+      router.replace(const NotificationRoute());
+    } else {
+      router.replace(const LoginRoute());
+    }
   }
 
   @override

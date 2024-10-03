@@ -9,4 +9,5 @@ class AppColors {
   static const kcText500 = Color(0xFF3A3A3A);
   static const kcText50 = Color(0xFFFAFAFA);
   static const kcText400 = Color(0xFFA3A3A3);
+  static const kcMuted300 = Color(0xFFD4D4D4);
 }

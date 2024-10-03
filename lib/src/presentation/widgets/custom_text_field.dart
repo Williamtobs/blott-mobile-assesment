@@ -95,8 +95,18 @@ class CustomTextField extends StatelessWidget {
           horizontal: padding ?? 0,
           vertical: 8.height,
         ),
-        border: InputBorder.none,
-        enabledBorder: InputBorder.none,
+
+        //bottom border only
+        border: const UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: AppColors.kcMuted300,
+          ),
+        ),
+        enabledBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: AppColors.kcMuted300,
+          ),
+        ),
       ),
       enabled: enabled,
       onFieldSubmitted: onDone,
