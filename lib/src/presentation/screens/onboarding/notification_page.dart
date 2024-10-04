@@ -4,15 +4,34 @@ import 'package:blott_mobile_assesment/src/core/constants/app_spacing.dart';
 import 'package:blott_mobile_assesment/src/core/constants/styles.dart';
 import 'package:blott_mobile_assesment/src/core/extension/extension.dart';
 import 'package:blott_mobile_assesment/src/core/router/app_router.dart';
+import 'package:blott_mobile_assesment/src/domain/providers/providers.dart';
 import 'package:blott_mobile_assesment/src/presentation/widgets/app_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 @RoutePage()
-class NotificationPage extends StatelessWidget {
+class NotificationPage extends ConsumerWidget {
   const NotificationPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    void notificationPermissionHandler() async {
+      ref.read(homeViewmodelProvider.notifier).setFirstName();
+      const permission = Permission.notification;
+      await permission.request().then((value) {
+        debugPrint('Permission status: $value');
+        if (value.isGranted) {
+          debugPrint('Permission granted');
+          context.router.replace(const HomeRoute());
+        } else {
+          openAppSettings();
+          debugPrint('Permission not granted');
+          context.router.replace(const HomeRoute());
+        }
+      });
+    }
+
     return Scaffold(
       backgroundColor: AppColors.kcSecondary50,
       body: Padding(
@@ -53,7 +72,7 @@ class NotificationPage extends StatelessWidget {
             AppButton(
               text: 'Continue',
               onTap: () {
-                context.router.replace(const HomeRoute());
+                notificationPermissionHandler();
               },
             ),
             verticalSpace(20),

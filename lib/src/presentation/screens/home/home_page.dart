@@ -81,6 +81,7 @@ class HomePage extends HookConsumerWidget {
                   else
                     Expanded(
                       child: SingleChildScrollView(
+                        physics: const BouncingScrollPhysics(),
                         child: Column(
                           children: [
                             ...state.news.map(
