@@ -13,7 +13,7 @@ abstract class BaseApiRepository {
       final response = await request();
       debugPrint('statusCode: ${response.response.statusCode}');
       if (response.response.statusCode == HttpStatus.ok) {
-        debugPrint('response: ${response.data.toString()}');
+        // debugPrint('response: ${response.data.toString()}');
         return DataSuccess(response.data);
       } else {
         debugPrint('response: ${response.response}');
