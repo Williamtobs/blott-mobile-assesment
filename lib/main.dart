@@ -1,12 +1,13 @@
 import 'package:blott_mobile_assesment/src/core/constants/app_colors.dart';
 import 'package:blott_mobile_assesment/src/core/router/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //Provider scope
+  await dotenv.load();
   runApp(const ProviderScope(child: MyApp()));
 }
 

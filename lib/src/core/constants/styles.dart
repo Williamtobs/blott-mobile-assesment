@@ -48,4 +48,15 @@ class Styles {
         fontWeight: fontWeight ?? FontWeight.w400,
         color: color ?? Colors.black,
       );
+
+  static TextStyle rubikText({
+    final Color? color,
+    final FontWeight? fontWeight,
+    final double? fontSize,
+  }) =>
+      GoogleFonts.rubik(
+        fontSize: (fontSize ?? 14).fontSize,
+        fontWeight: fontWeight ?? FontWeight.w400,
+        color: color ?? Colors.black,
+      );
 }

@@ -3,6 +3,7 @@ import 'package:blott_mobile_assesment/src/core/constants/app_colors.dart';
 import 'package:blott_mobile_assesment/src/core/constants/app_spacing.dart';
 import 'package:blott_mobile_assesment/src/core/constants/styles.dart';
 import 'package:blott_mobile_assesment/src/core/extension/extension.dart';
+import 'package:blott_mobile_assesment/src/core/router/app_router.dart';
 import 'package:blott_mobile_assesment/src/presentation/widgets/app_button.dart';
 import 'package:flutter/material.dart';
 
@@ -51,7 +52,9 @@ class NotificationPage extends StatelessWidget {
             ),
             AppButton(
               text: 'Continue',
-              onTap: () {},
+              onTap: () {
+                context.router.replace(const HomeRoute());
+              },
             ),
             verticalSpace(20),
           ],
